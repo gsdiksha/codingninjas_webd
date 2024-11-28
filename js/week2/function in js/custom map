@@ -1,0 +1,32 @@
+function main() {
+  // Define the array to be processed
+  const array = [2, 4, 6, 2, 7, 8];
+
+  // Create the customMap function
+  function customMap(inputArray, callback) {
+    // Create an empty array to store the results
+    const resultArray = [];
+
+    // Iterate over each element in the input array
+    for (let i = 0; i < inputArray.length; i++) {
+      // Apply the callback function to the current element
+      const transformedElement = callback(inputArray[i], i, inputArray);
+
+      // Add the result to the new array
+      resultArray.push(transformedElement);
+    }
+
+    // Return the new array with the modified values
+    return resultArray;
+  }
+
+  // Example usage of customMap
+  const modifiedArray = customMap(array, (element) => element * 2);
+
+  console.log("Original Array:", array);
+  console.log("Modified Array:", modifiedArray);
+
+  return customMap;
+}
+
+main();

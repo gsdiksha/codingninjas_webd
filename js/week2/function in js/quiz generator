@@ -1,0 +1,31 @@
+function main() {
+    const questions = [
+      "Question1",
+      "Question2",
+      "Question3",
+      "Question4",
+      "Question5"
+    ];
+    
+    function shuffle(arr) {
+      return function () {
+        //Write your code below
+          // Create a copy of the original array to avoid mutating it
+            const result = [...arr];
+
+            // Fisher-Yates shuffle algorithm
+            for (let i = result.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1)); // Generate a random index
+                [result[i], result[j]] = [result[j], result[i]]; // Swap elements
+            }
+        return result;
+      };
+    }
+    // Create the shuffle function
+    const getShuffledQuestions = shuffle(questions);
+    // console.log(questions);
+    console.log(getShuffledQuestions());
+    // console.log("Another shuffled set:", getShuffledQuestions());
+    return shuffle;
+  }
+  

@@ -1,0 +1,38 @@
+// Function to calculate the price of a pizza based on size, toppings, and quantity
+function pizzaPricing(size) {
+  
+  // Create an object to store the base prices for each pizza size
+  const basePrices = {
+    small: 8,
+    medium: 10,
+    large: 12,
+  };
+  // Return a function(curried function) that takes the selected toppings as a parameter
+    return function (toppings) {
+    // Define the price per topping
+        
+    const toppingPrice = 1.5;
+    
+    
+
+    // Return another function inside the curried function that takes the quantity as a parameter
+        return function (quantity) {
+      // Get the base price for the selected size
+      const basePrice = basePrices[size] || 0; // Default to 0 if size is invalid
+
+      // Calculate the total price
+      const totalPrice = (basePrice + toppings.length * toppingPrice) * quantity;
+
+      // Return the calculated total price rounded to two decimal places
+      return totalPrice.toFixed(2);
+    };
+  };
+    
+}
+
+// Example usage
+const largePizza = pizzaPricing("large"); // Select pizza size
+const largePizzaWithToppings = largePizza(["bacon", "cheese"]); // Add toppings
+const totalPrice = largePizzaWithToppings(1); // Set quantity
+
+console.log(totalPrice); // Output: Total Price: $15.00

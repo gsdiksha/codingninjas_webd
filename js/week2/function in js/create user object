@@ -1,0 +1,22 @@
+// Complete the createUserObjects function
+// Do not alter the starter cod// Complete the createUserObjects function
+// Do not alter the starter code
+const ids = [1, 2, 3];
+const names = ["John", "Jane", "Alice"];
+const images = ["john.jpg", "jane.jpg", "alice.jpg"];
+
+function createUserObjects(ids, names, images) {
+  // Use the map function on the ids array to iterate over each element
+  return ids.map((id, index) => {
+    // Create an object for each id with the corresponding name and image
+    return {
+      id: id,
+      name: names[index],
+      image: images[index],
+    };
+  });
+}
+
+// Example usage
+const users = createUserObjects(ids, names, images);
+console.log(users);
